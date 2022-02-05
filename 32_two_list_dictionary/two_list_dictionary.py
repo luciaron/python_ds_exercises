@@ -14,4 +14,15 @@ def two_list_dictionary(keys, values):
 
         >>> two_list_dictionary(['a', 'b', 'c'], [1, 2, 3, 4])
         {'a': 1, 'b': 2, 'c': 3}
-   """
+    """
+    if len(keys) <= len(values):
+        return { key : values[keys.index(key)] for key in keys }
+    elif len(keys) > len(values):
+        res = {}
+        for val in values:
+            res[keys[values.index(val)]] = val
+        count = len(values) - len(keys)
+        while count < 0:
+            res[keys[count]] = None
+            count += 1
+        return res
